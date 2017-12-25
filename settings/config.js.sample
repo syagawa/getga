@@ -4,5 +4,28 @@ config.credential = require('./Change Me'); //<サービスアカウントキー
 config.viewId = 'Change Me'; //GAのビューのID
 config.startDate = 'Change Me';//xxxx-xx-xx
 config.endDate = 'Change Me';//xxxx-xx-xx
+config.dimensions = [
+  {
+    // "name": "ga:pagePath"
+    "name": "ga:mobileDeviceInfo"
+    // "name": "ga:mobileDeviceBranding"
+    // "name": "ga:mobileDeviceModel"
+    // "name": "ga:mobileDeviceMarketingName"
+    // "name": "ga:deviceCategory"
+  },
+  {
+    "name": "ga:mobileDeviceBranding"
+  },
+  {
+    "name": "ga:mobileDeviceModel"
+  },
+  {
+    "name": "ga:mobileDeviceMarketingName"
+  },
+  {
+    "name": "ga:deviceCategory"
+  }
+];//dimensions https://developers.google.com/analytics/devguides/reporting/core/dimsmets
+
 
 module.exports = config;
