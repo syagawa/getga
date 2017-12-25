@@ -3,12 +3,12 @@ var analytics = google.analyticsreporting('v4');
 
 var util = require('util');
 
-var credential = require('./settings/analytics-reporting-2e08f0451d6d.json');
+var config = require('./settings/config.js');
 
-var viewId = '166037574';
-
-var startDate = '2017-12-01';
-var endDate = '2017-12-20';
+var credential = config.credential;
+var viewId = config.viewId;
+var startDate = config.startDate;
+var endDate = config.endDate;
 
 var jwtClient = new google.auth.JWT(credential.client_email, null, credential.private_key, ["https://www.googleapis.com/auth/analytics.readonly"], null);
 

@@ -1,0 +1,8 @@
+var config = {};
+
+config.credential = require('./Change Me'); //<サービスアカウントキーのファイル名>
+config.viewId = 'Change Me'; //GAのビューのID
+config.startDate = 'Change Me';//xxxx-xx-xx
+config.endDate = 'Change Me';//xxxx-xx-xx
+
+module.exports = config;
