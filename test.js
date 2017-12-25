@@ -1,6 +1,8 @@
 var google = require('googleapis');
 var analytics = google.analyticsreporting('v4');
 
+var util = require('util');
+
 var credential = require('./settings/analytics-reporting-2e08f0451d6d.json');
 
 var viewId = '166037574';
@@ -41,7 +43,7 @@ jwtClient.authorize(function(error, tokens){
       if(error){
         console.log(error);
       }
-      console.log(response)
+      console.log( util.inspect(response, false, null) );
     }
   );
 });

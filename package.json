@@ -9,6 +9,7 @@
   "author": "yagawa@qzc.co.jp",
   "license": "MIT",
   "dependencies": {
-    "googleapis": "^23.0.0"
+    "googleapis": "^23.0.0",
+    "util": "^0.10.3"
   }
 }
