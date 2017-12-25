@@ -24,8 +24,22 @@ config.dimensions = [
   },
   {
     "name": "ga:deviceCategory"
+  },
+  {
+    "name": "ga:operatingSystem"
+  },
+  {
+    "name": "ga:operatingSystemVersion"
   }
+
 ];//dimensions https://developers.google.com/analytics/devguides/reporting/core/dimsmets
 
+config.orderBys = [
+  {
+    "fieldName": "ga:operatingSystemVersion",
+    "sortOrder": "ASCENDING",
+    "orderType": "VALUE"
+  }
+];//order https://developers.google.com/analytics/devguides/reporting/core/v4/rest/v4/reports/batchGet?hl=ja#OrderBy
 
 module.exports = config;

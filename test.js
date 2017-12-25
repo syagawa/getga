@@ -10,6 +10,7 @@ var viewId = config.viewId;
 var startDate = config.startDate;
 var endDate = config.endDate;
 var dimensions = config.dimensions;
+var orderBys = config.orderBys;
 
 var jwtClient = new google.auth.JWT(credential.client_email, null, credential.private_key, ["https://www.googleapis.com/auth/analytics.readonly"], null);
 
@@ -30,11 +31,13 @@ jwtClient.authorize(function(error, tokens){
               }
             ],
             "viewId": viewId,
-            "dimensions": dimensions
+            "dimensions": dimensions,
+            "orderBys": orderBys
           }
         ]
       },
       auth: jwtClient
+
     },
     function(error, response){
       if(error){
