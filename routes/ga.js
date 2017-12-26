@@ -49,7 +49,7 @@ jwtClient.authorize(function(error, tokens){
       if(error){
         console.log(error);
       }
-      console.log( util.inspect(response, false, null) );
+      // console.log( util.inspect(response, false, null) );
       g_obj = response;
     }
   );

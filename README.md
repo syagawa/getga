@@ -18,7 +18,7 @@ Google Analyticsのレポートをnodeで取得する。
 ## 実行
 
 ```bash
-$ npm start
+$ gulp
 # localhost:3000/gaを開き ブラウザの開発者ツールのconsoleでg_objと叩くと結果を表示
 ```
 
