@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{str}
+
+  script.
+    window.g_obj = !{JSON.stringify(g_obj)};

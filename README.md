@@ -18,7 +18,7 @@ Google Analyticsのレポートをnodeで取得する。
 ## 実行
 
 ```bash
-$ node test.js
+$ npm start
 ```
 
 
