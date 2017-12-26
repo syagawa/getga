@@ -42,4 +42,6 @@ config.orderBys = [
   }
 ];//order https://developers.google.com/analytics/devguides/reporting/core/v4/rest/v4/reports/batchGet?hl=ja#OrderBy
 
+config.port = "3000";
+
 module.exports = config;
