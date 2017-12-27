@@ -4,6 +4,7 @@ block content
   h1= title
 
   div(id="" + app_name)
-
+    div(v-for="dev in devices")
+      div {{ dev }}
   script.
     window.json_obj = !{JSON.stringify(json_obj)};

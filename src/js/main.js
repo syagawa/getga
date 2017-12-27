@@ -14,12 +14,22 @@ import Vue from "../../node_modules/vue/dist/vue.min.js";
       data: {
         json: global.json_obj
       },
+      computed: {
+        devices: function(){
+          return this.json.reports[0].data.rows;
+        },
+        heads: function(){
+          return this.json.reports[0].columnHeader.dimensions;
+        }
+      },
       mounted: function(){
         console.info("mounted");
       },
       created: function(){
         console.info("created");
         console.info(this.json);
+        console.info(this.devices);
+        console.info(this.heads);
       }
 
     });

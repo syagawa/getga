@@ -116,12 +116,22 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
       data: {
         json: global.json_obj
       },
+      computed: {
+        devices: function devices() {
+          return this.json.reports[0].data.rows;
+        },
+        heads: function heads() {
+          return this.json.reports[0].columnHeader.dimensions;
+        }
+      },
       mounted: function mounted() {
         console.info("mounted");
       },
       created: function created() {
         console.info("created");
         console.info(this.json);
+        console.info(this.devices);
+        console.info(this.heads);
       }
 
     });
