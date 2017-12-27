@@ -2,7 +2,8 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{str}
+
+  div(id="" + app_name)
 
   script.
-    window.g_obj = !{JSON.stringify(g_obj)};
+    window.json_obj = !{JSON.stringify(json_obj)};

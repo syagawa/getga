@@ -61,8 +61,9 @@ router.get('/', function(req, res, next) {
   res.render(
     'ga',
     {
-      str: 'ga',
-      g_obj: g_obj
+      title: 'Google Analytics',
+      app_name: 'app_ga',
+      json_obj: g_obj
     }
   );
 });
