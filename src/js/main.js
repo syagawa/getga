@@ -16,7 +16,17 @@ import Vue from "../../node_modules/vue/dist/vue.min.js";
       },
       computed: {
         devices: function(){
-          return this.json.reports[0].data.rows;
+          return this.json.reports[0].data.rows.sort(function(a, b){
+            var val_a = parseInt(a.metrics[0].values[0], 10);
+            var val_b = parseInt(b.metrics[0].values[0], 10);
+            if(val_a < val_b){
+              return 1;
+            }
+            if(val_a > val_b){
+              return -1;
+            }
+            return 0;
+          });
         },
         heads: function(){
           return this.json.reports[0].columnHeader.dimensions;

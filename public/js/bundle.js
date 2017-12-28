@@ -118,7 +118,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
       },
       computed: {
         devices: function devices() {
-          return this.json.reports[0].data.rows;
+          return this.json.reports[0].data.rows.sort(function (a, b) {
+            var val_a = parseInt(a.metrics[0].values[0], 10);
+            var val_b = parseInt(b.metrics[0].values[0], 10);
+            if (val_a < val_b) {
+              return 1;
+            }
+            if (val_a > val_b) {
+              return -1;
+            }
+            return 0;
+          });
         },
         heads: function heads() {
           return this.json.reports[0].columnHeader.dimensions;

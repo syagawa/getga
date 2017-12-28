@@ -4,7 +4,18 @@ block content
   h1= title
 
   div(id="" + app_name)
-    div(v-for="dev in devices")
-      div {{ dev }}
+    table
+      thead
+        tr
+          td(v-for="head in heads")
+            span {{ head }}
+          td
+            span value
+      tbody
+        tr(v-for="dev in devices")
+          td(v-for="dim in dev.dimensions")
+            span {{ dim }}
+          td
+            span {{ dev.metrics[0].values[0] }}
   script.
     window.json_obj = !{JSON.stringify(json_obj)};
