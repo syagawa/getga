@@ -7,12 +7,12 @@ block content
     table
       thead
         tr
-          td(v-for="head in heads")
-            span {{ head }}
+          td(v-for="(head, index) in heads")
+            span(v-on:click="sort(index)") {{ head }}
           td
-            span value
+            span(v-on:click="sortByValue(devices)") value
       tbody
-        tr(v-for="dev in devices")
+        tr(v-for="(dev, index) in devices")
           td(v-for="dim in dev.dimensions")
             span {{ dim }}
           td

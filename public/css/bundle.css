@@ -1,5 +1,8 @@
 table {
   width: 100%;
   word-break: break-word; }
+  table thead tr td {
+    cursor: pointer;
+    font-weight: 700; }
   table tr td {
     padding: 5px 10px; }
