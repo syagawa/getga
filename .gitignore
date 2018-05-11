@@ -2,6 +2,7 @@
 .DS_Store
 /_temp/
 /settings/config.js
+/settings/_config.*.js
 /settings/*.json
 
 # Logs
