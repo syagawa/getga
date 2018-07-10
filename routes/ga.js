@@ -2,9 +2,11 @@ var express = require('express');
 var router = express.Router();
 
 
-
-var google = require('googleapis');
+var { GoogleApis } = require('googleapis');
+var google = new GoogleApis();
 var analytics = google.analyticsreporting('v4');
+
+console.info(google);
 
 var util = require('util');
 
@@ -50,11 +52,10 @@ jwtClient.authorize(function(error, tokens){
         console.log(error);
       }
       // console.log( util.inspect(response, false, null) );
-      g_obj = response;
+      g_obj = response.data;
     }
   );
 });
-
 
 /* GET ga listing. */
 router.get('/', function(req, res, next) {

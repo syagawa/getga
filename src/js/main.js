@@ -3,8 +3,6 @@ import Vue from "../../node_modules/vue/dist/vue.min.js";
 
 (function(global){
 
-  // global.Vue = require("../../node_modules/vue/dist/vue.min.js");
-
   var app;
 
   if(document.getElementById("app_ga")){

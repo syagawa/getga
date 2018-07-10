@@ -6,7 +6,7 @@ module.exports = {
       filename: "js/bundle.js"
     },
     module: {
-      loaders: [
+      rules: [
         {
           test: /\.js$/,
           exclude: /node_modules/,
@@ -35,7 +35,7 @@ module.exports = {
       filename: "css/bundle.css"
     },
     module: {
-      loaders: [
+      rules: [
         {
           test: /\.scss$/,
           loader: ExtractTextPlugin.extract({
