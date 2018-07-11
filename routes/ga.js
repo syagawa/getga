@@ -1,12 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-
 var { GoogleApis } = require('googleapis');
 var google = new GoogleApis();
 var analytics = google.analyticsreporting('v4');
-
-console.info(google);
 
 var util = require('util');
 

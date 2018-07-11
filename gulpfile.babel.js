@@ -1,16 +1,13 @@
-const gulp = require("gulp");
-const nodemon = require("gulp-nodemon");
+import gulp from "gulp";
+import nodemon from "gulp-nodemon";
 
-const webpackStream = require("webpack-stream");
-const webpack = require("webpack");
+import webpackStream from "webpack-stream";
+import webpack from "webpack";
+import webpackConfig from "./webpack.config";
 
-const webpackConfig = require("./webpack.config");
+import notifier from "node-notifier";
 
-const notifier = require("node-notifier");
-
-const browser = require("browser-sync");
-
-const runSequence = require("run-sequence");
+import browser from "browser-sync";
 
 const errorHandler = function(error){
   var message;
@@ -40,35 +37,27 @@ const webpackCSSError = function(){
   this.emit("end");
 };
 
-gulp.task("js", function(){
+export function js(){
   return webpackStream(webpackConfig.js, webpack)
           .on("error", webpackJSError)
           .pipe(gulp.dest("public"))
           .pipe(browser.reload({stream:true}));
-});
+}
 
-gulp.task("css", function(){
+export function css(){
   return webpackStream(webpackConfig.css, webpack)
           .on("error", webpackCSSError)
           .pipe(gulp.dest("public"))
           .pipe(browser.reload({stream:true}));
-});
+}
 
-gulp.task("export", function(){
-  return (function(){
-    runSequence("js");
-    runSequence("css");
-  })();
-});
-
-gulp.task("watch", function(){
-  gulp.watch(["src/js/**/*.js","!src/js/min/**/*.js"],["js"]);
-  gulp.watch("src/scss/**/*.scss",["css"]);
-});
+export function watch(){
+  gulp.watch(["src/js/**/*.js","!src/js/min/**/*.js"], gulp.series(["js"]));
+  gulp.watch("src/scss/**/*.scss", gulp.series(["css"]));
+}
 
 
-gulp.task("server", function(){
-  runSequence("export", "watch");
+export function server(){
   nodemon(
     {
       "script": "./bin/www"
@@ -78,7 +67,12 @@ gulp.task("server", function(){
     browser: "chrome"
   });
   browser.reload({stream:true});
-});
+}
 
-gulp.task("default", ["server"], function(){
-});
+const build = gulp.series( js, css );
+gulp.task("build", build);
+
+const start = gulp.parallel(build, server, watch);
+gulp.task("start", start);
+
+export default start;
