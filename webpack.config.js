@@ -1,9 +1,18 @@
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+var ENV = process.env.NODE_ENV;
+if(ENV !== "production"){
+  ENV = "development";
+}
+
 module.exports = {
   "js": {
-    entry: "./src/js/main.js",
+    mode: ENV,
+    entry: {
+      "bundle": "./src/js/main.js"
+    },
     output: {
-      filename: "js/bundle.js"
+      filename: "js/[name].js"
     },
     module: {
       rules: [
@@ -28,32 +37,31 @@ module.exports = {
     }
   },
   "css": {
-    entry: [
-      "./src/scss/main.scss"
-    ],
+    mode: ENV,
+    entry: {
+      "bundle": [
+        "./src/scss/main.scss"
+      ]
+    },
     output: {
-      filename: "css/bundle.css"
+      filename: "css/[name].css"
     },
     module: {
       rules: [
         {
-          test: /\.scss$/,
-          loader: ExtractTextPlugin.extract({
-            fallback: "style-loader",
-            use: "css-loader?-url&minimie!sass-loader"
-          })
-        },
-        {
-          test: /\.css$/,
-          loader: ExtractTextPlugin.extract({
-            fallback: "style-loader",
-            use: "css-loader?-url&minimize"
-          })
+          test: /\.(sa|sc|c)ss$/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            "css-loader?-url&minimie!",
+            "sass-loader"
+          ]
         }
       ]
     },
     plugins: [
-      new ExtractTextPlugin("css/bundle.css")
+      new MiniCssExtractPlugin({
+        filename: "css/[name].css"
+      })
     ]
   }
 };
