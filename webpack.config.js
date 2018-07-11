@@ -44,7 +44,7 @@ module.exports = {
       ]
     },
     output: {
-      filename: "css/[name].css"
+      filename: "tmp.[hash]"
     },
     module: {
       rules: [

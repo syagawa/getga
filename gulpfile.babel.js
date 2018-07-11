@@ -9,6 +9,8 @@ import notifier from "node-notifier";
 
 import browser from "browser-sync";
 
+import del from "del";
+
 const errorHandler = function(error){
   var message;
   if(error.message){
@@ -56,6 +58,11 @@ export function watch(){
   gulp.watch("src/scss/**/*.scss", gulp.series(["css"]));
 }
 
+export function deleteFiles(){
+  return del([
+    'public/tmp.*'
+  ]);
+}
 
 export function server(){
   nodemon(
@@ -69,7 +76,7 @@ export function server(){
   browser.reload({stream:true});
 }
 
-const build = gulp.series( js, css );
+const build = gulp.series( js, css, deleteFiles );
 gulp.task("build", build);
 
 const start = gulp.parallel(build, server, watch);
