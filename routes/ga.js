@@ -1,24 +1,22 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const { GoogleApis } = require('googleapis');
+const util = require('util');
+const config = require('../settings/config.js');
 
-var { GoogleApis } = require('googleapis');
-var google = new GoogleApis();
-var analytics = google.analyticsreporting('v4');
+const router = express.Router();
+const google = new GoogleApis();
+const analytics = google.analyticsreporting('v4');
 
-var util = require('util');
+const credential = config.credential;
+const viewId = config.viewId;
+const startDate = config.startDate;
+const endDate = config.endDate;
+const dimensions = config.dimensions;
+const orderBys = config.orderBys;
 
-var config = require('../settings/config.js');
+const jwtClient = new google.auth.JWT(credential.client_email, null, credential.private_key, ["https://www.googleapis.com/auth/analytics.readonly"], null);
 
-var credential = config.credential;
-var viewId = config.viewId;
-var startDate = config.startDate;
-var endDate = config.endDate;
-var dimensions = config.dimensions;
-var orderBys = config.orderBys;
-
-var jwtClient = new google.auth.JWT(credential.client_email, null, credential.private_key, ["https://www.googleapis.com/auth/analytics.readonly"], null);
-
-var g_obj;
+let g_obj;
 
 jwtClient.authorize(function(error, tokens){
   if(error){
