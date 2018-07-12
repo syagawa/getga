@@ -23,9 +23,9 @@ app.use(express.static(path.join(__dirname, 'node_modules')));
 
 
 // routers
-let routes = [
+const routes = [
   {
-    path: '/',
+    path: '/index',
     src: require('./routes/index')
   },
   {
@@ -41,6 +41,25 @@ for(let i = 0; i < routes.length; i++){
   let route = routes[i];
   app.use(route.path, route.src);
 }
+
+const redirects = [
+  {
+    path: "/",
+    to: "/index"
+  },
+  {
+    path: "/mobile",
+    to: "/ga"
+  }
+];
+for(let i = 0; i < redirects.length; i++){
+  let redirect = redirects[i];
+  app.get(redirect.path, function(req, res){
+    res.redirect(302, redirect.to);
+  });
+}
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
