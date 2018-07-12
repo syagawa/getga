@@ -1,6 +1,8 @@
+html, body {
+  font-size: 16px; }
+
 table {
-  width: 100%;
-  word-break: break-word; }
+  width: 100%; }
   table thead tr td {
     cursor: pointer;
     font-weight: 700; }
@@ -8,4 +10,37 @@ table {
     padding: 5px 10px; }
   table select {
     padding: 5005px; }
+
+table {
+  width: 100%;
+  box-sizing: border-box;
+  border-right: 1px solid #c3c3c3;
+  border-top: 1px solid #c3c3c3;
+  word-break: break-word;
+  -webkit-border-horizontal-spacing: 0;
+  -webkit-border-vertical-spacing: 0; }
+  table thead tr td, table thead tr th {
+    background-color: #ececec;
+    cursor: pointer;
+    padding: 0.8rem 1rem;
+    white-space: nowrap;
+    cursor: pointer;
+    font-weight: 700; }
+    table thead tr td .sort_btn i, table thead tr th .sort_btn i {
+      color: #d4d4d4; }
+    table thead tr td .sort_btn.current.asc i.asc, table thead tr th .sort_btn.current.asc i.asc {
+      color: #030303; }
+    table thead tr td .sort_btn.current.desc i.desc, table thead tr th .sort_btn.current.desc i.desc {
+      color: #030303; }
+  table tbody tr td {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+    word-break: break-word; }
+  table td, table th {
+    border-left: 1px solid #c3c3c3;
+    border-bottom: 1px solid #c3c3c3;
+    font-size: 1rem; }
+    table td .txt, table th .txt {
+      padding: 0;
+      margin: 0; }
 
