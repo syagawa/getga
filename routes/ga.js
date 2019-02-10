@@ -14,6 +14,8 @@ const endDate = config.endDate;
 const dimensions = config.dimensions;
 const orderBys = config.orderBys;
 
+const fs = require("fs");
+
 const jwtClient = new google.auth.JWT(credential.client_email, null, credential.private_key, ["https://www.googleapis.com/auth/analytics.readonly"], null);
 
 let g_obj;
@@ -62,6 +64,13 @@ router.get('/', function(req, res, next) {
       json_obj: g_obj
     }
   );
+  const json = JSON.stringify(g_obj);
+  try {
+    fs.writeFile("./a.json", json);
+    return true;
+  } catch(err) {
+    return false;
+  }
 });
 
 module.exports = router;

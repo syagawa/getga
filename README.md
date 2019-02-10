@@ -26,6 +26,5 @@ $ gulp
 
 
 
-
 参照URL
 <http://beyondjapan.com/blog/2017/04/get-google-analytics-data-by-nodejs>
